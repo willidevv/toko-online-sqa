@@ -11,14 +11,14 @@ jobs:
     - name: Setup PHP Environment
       uses: shivammathur/setup-php@v2
       with:
-        php-version: '8.2.12'
+        php-version: '8.2'
         coverage: xdebug # Diperlukan untuk Metrik Coverage
 
     - name: Install PHP Dependencies
       run: composer install --prefer-dist --no-progress
 
     - name: Run PHPUnit & Quality Metrics
-      run: vendor/bin/phpunit tests/ --coverage-text
+      run: php vendor/bin/phpunit tests/ --coverage-text --coverage-filter src/ 
 
     - name: Setup Node.js for Cypress
       uses: actions/setup-node@v3
